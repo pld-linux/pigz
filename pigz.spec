@@ -1,11 +1,11 @@
 Summary:	A parallel implementation of gzip
 Name:		pigz
-Version:	2.1.5
+Version:	2.1.6
 Release:	1
 License:	BSD
 Group:		Applications/Archiving
 Source0:	http://www.zlib.net/pigz/%{name}-%{version}.tar.gz
-# Source0-md5:	580873165ef3a369674f0c0af4c96d67
+# Source0-md5:	cbe9030c4be3d0ef2438ee5f8b169ca4
 URL:		http://www.zlib.net/pigz/
 BuildRequires:	rpmbuild(macros)
 BuildRequires:	zlib-devel
