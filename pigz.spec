@@ -1,14 +1,14 @@
 Summary:	A parallel implementation of gzip
 Summary(pl.UTF-8):	Zrównoleglona implementacja gzipa
 Name:		pigz
-Version:	2.3.1
+Version:	2.3.3
 Release:	1
 License:	BSD
 Group:		Applications/Archiving
 Source0:	http://www.zlib.net/pigz/%{name}-%{version}.tar.gz
-# Source0-md5:	e803f8bc0770c7a5e96dccb1d2dd2aab
+# Source0-md5:	01d7a16cce77929cc1a78aa1bdfb68cb
 URL:		http://www.zlib.net/pigz/
-BuildRequires:	rpmbuild(macros)
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -23,20 +23,20 @@ wieloprocesorowych i wielordzeniowych.
 %prep
 %setup -q
 
+%{__sed} -i -e '/pigz/ s/-lm/-lm -lz/' Makefile
+
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} %{rpmcppflags}" \
+	CFLAGS="-Wall -Wextra %{rpmcflags} %{rpmcppflags}" \
 	LDFLAGS="%{rpmldflags} %{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
-
-install pigz unpigz $RPM_BUILD_ROOT%{_bindir}
-install pigz.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install -p pigz unpigz $RPM_BUILD_ROOT%{_bindir}
+cp -p pigz.1 $RPM_BUILD_ROOT%{_mandir}/man1
 echo '.so pigz.1' >$RPM_BUILD_ROOT%{_mandir}/man1/unpigz.1
 
 %clean
