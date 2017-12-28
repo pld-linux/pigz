@@ -1,12 +1,12 @@
 Summary:	A parallel implementation of gzip
 Summary(pl.UTF-8):	Zrównoleglona implementacja gzipa
 Name:		pigz
-Version:	2.3.4
+Version:	2.4
 Release:	1
 License:	BSD
 Group:		Applications/Archiving
 Source0:	http://www.zlib.net/pigz/%{name}-%{version}.tar.gz
-# Source0-md5:	08e6b2e682bbf65ccf12c8966d633fc6
+# Source0-md5:	def2f6e19d9d8231445adc1349d346df
 URL:		http://www.zlib.net/pigz/
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
