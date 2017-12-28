@@ -23,8 +23,6 @@ wieloprocesorowych i wielordzeniowych.
 %prep
 %setup -q
 
-%{__sed} -i -e '/pigz/ s/-lm/-lm -lz/' Makefile
-
 %build
 %{__make} \
 	CC="%{__cc}" \
